@@ -1,0 +1,27 @@
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/shop?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+  application:
+    name: user-service
+  dubbo:
+    application:
+      name: user-service
+    protocol:
+      name: dubbo
+      port: 20880
+    registry:
+      address: 127.0.0.1:2181
+      protocol: zookeeper
+    base-package: com.shop.user.service
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
+server:
+  port: 8081
+logging:
+  level:
+    com: debug
