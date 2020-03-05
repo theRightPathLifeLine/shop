@@ -1,9 +1,5 @@
 package com.shop.bean;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,10 +9,6 @@ import java.util.List;
  * @param
  * @return
  */
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
 public class PmsBaseAttrInfo implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +21,46 @@ public class PmsBaseAttrInfo implements Serializable {
     private String catalog3Id;
     @Column
     private String isEnabled;
+    @Transient
+    List<PmsBaseAttrValue> attrValueList;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAttrName() {
+        return attrName;
+    }
+
+    public void setAttrName(String attrName) {
+        this.attrName = attrName;
+    }
+
+    public String getCatalog3Id() {
+        return catalog3Id;
+    }
+
+    public void setCatalog3Id(String catalog3Id) {
+        this.catalog3Id = catalog3Id;
+    }
+
+    public String getIsEnabled() {
+        return isEnabled;
+    }
+
+    public void setIsEnabled(String isEnabled) {
+        this.isEnabled = isEnabled;
+    }
+
+    public List<PmsBaseAttrValue> getAttrValueList() {
+        return attrValueList;
+    }
+
+    public void setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
+        this.attrValueList = attrValueList;
+    }
 }

@@ -1,9 +1,8 @@
 package com.shop.bean;
 
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,8 +14,6 @@ import java.util.List;
  */
 @Getter
 @Setter
-@ToString
-@NoArgsConstructor
 public class PmsBaseCatalog1 implements Serializable {
     @Id
     @Column
@@ -24,5 +21,10 @@ public class PmsBaseCatalog1 implements Serializable {
     private String id;
     @Column
     private String name;
+
+    @Transient
+    private List<PmsBaseCatalog2> catalog2s;
+
+
 }
 

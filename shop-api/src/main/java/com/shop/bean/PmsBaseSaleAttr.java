@@ -1,10 +1,5 @@
 package com.shop.bean;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -13,10 +8,6 @@ import java.io.Serializable;
  * @param
  * @return
  */
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
 public class PmsBaseSaleAttr implements Serializable {
 
     @Id
@@ -26,4 +17,19 @@ public class PmsBaseSaleAttr implements Serializable {
     @Column
     String name;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
