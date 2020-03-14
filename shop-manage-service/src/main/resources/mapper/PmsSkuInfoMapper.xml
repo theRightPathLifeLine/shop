@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.manage.mapper.PmsSkuInfoMapper">
+    <select id="selectSkuBySpuId" resultMap="pmsProductSaleAttrMap">
+        SELECT
+            s.id AS s_id,
+            p.id AS p_id,
+            s.*, p.*
+        FROM
+            pms_sku_sale_attr_value p
+        INNER JOIN pms_sku_info s ON p.sku_id = s.id
+        WHERE
+            s.product_id = #{productId}
+        order by s.id ,p.sale_attr_value_id;
+    </select>
+    <resultMap id="pmsProductSaleAttrMap" type="com.shop.bean.PmsSkuInfo" autoMapping="true">
+        <result column="s_id" property="id"></result>
+        <collection property="pmsSkuSaleAttrValueList" ofType="com.shop.bean.PmsSkuSaleAttrValue"
+                    autoMapping="true">
+            <result column="p_id" property="id"></result>
+        </collection>
+    </resultMap>
+</mapper>

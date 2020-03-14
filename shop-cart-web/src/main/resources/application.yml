@@ -1,0 +1,24 @@
+
+spring:
+  application:
+    name: cart-web
+  dubbo:
+    application:
+      name: cart-web
+    protocol:
+      name: dubbo
+    registry:
+      address: 127.0.0.1:2181
+      protocol: zookeeper
+    base-package: com.shop.cart
+    consumer:
+      check: false
+      timeout: 60000
+  thymeleaf:
+    cache: false
+server:
+  port: 8121
+logging:
+  level:
+    com: debug
+

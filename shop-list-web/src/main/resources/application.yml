@@ -1,0 +1,25 @@
+
+spring:
+  application:
+    name: list-web
+  dubbo:
+    application:
+      name: list-web
+    protocol:
+      name: dubbo
+    registry:
+      address: 127.0.0.1:2181
+      protocol: zookeeper
+    base-package: com.shop.list
+    consumer:
+      check: false
+      timeout: 60000
+  thymeleaf:
+    cache: false
+server:
+  port: 8101
+logging:
+  level:
+    com: debug
+
+

@@ -4,12 +4,17 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.shop.bean.*;
 import com.shop.manage.mapper.*;
 import com.shop.service.SpuService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
+@CacheConfig(cacheNames = "spu")
 @Service
 public class SpuServiceImpl implements SpuService{
 
@@ -30,6 +35,9 @@ public class SpuServiceImpl implements SpuService{
 
     @Autowired
     PmsProductImageMapper pmsProductImageMapper;
+
+    @Autowired
+    AttrInfoMapper attrInfoMapper;
 
     @Override
     public List<PmsProductInfo> getSpuList(String catalog3Id) {
@@ -119,6 +127,18 @@ public class SpuServiceImpl implements SpuService{
             pmsProductSaleAttrValue.setProductId(spuId);
             productSaleAttr.setPmsProductSaleAttrValueList(pmsProductSaleAttrValueMapper.select(pmsProductSaleAttrValue));
         }
+
         return pmsProductSaleAttrs;
+    }
+
+
+    @Cacheable(keyGenerator = "myKeyGenerator")
+    @Override
+    public List<PmsProductSaleAttr> getSpuSaleAttrList(String productId, String id) {
+        return pmsProductSaleAttrMapper.selectBySpuIdAndSkuId(productId,id);
+    }
+
+    public List<PmsBaseAttrInfo> getByAttrValueId(String attrValues){
+        return attrInfoMapper.selectByAttrValueId(attrValues);
     }
 }

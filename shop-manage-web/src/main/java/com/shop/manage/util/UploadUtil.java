@@ -12,7 +12,7 @@ public class UploadUtil {
 
 
     public static String upload(MultipartFile multipartFile) {
-        String url = "http://192.168.5.114";
+        String url = "http://192.168.0.106";
         try {
             String file = UploadUtil.class.getResource("/tracker.conf").getFile();
             ClientGlobal.init(file);

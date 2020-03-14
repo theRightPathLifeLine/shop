@@ -1,2 +1,9 @@
+#shop-manage-web 8051
 #shop-user-web 8061
+#shop-manage-service 8071
 #shop-user-service 8081
+#shop-item-web 8091
+#shop-list-web 8101
+#shop-list-service 8111
+#shop-cart-web 8121
+#shop-cart-service 8131

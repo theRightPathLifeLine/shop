@@ -15,6 +15,9 @@ spring:
       address: 127.0.0.1:2181
       protocol: zookeeper
     base-package: com.shop.manage
+  redis:
+    host: 127.0.0.1
+    port: 6379
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

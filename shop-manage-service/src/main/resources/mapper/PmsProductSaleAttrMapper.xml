@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.manage.mapper.PmsProductSaleAttrMapper">
+    <select id="selectBySpuIdAndSkuId" resultMap="pmsProductSaleAttrMap">
+        SELECT
+            ass.id AS ass_id,
+            avs.id AS avs_id, ass.*, avs.*,
+        IF (a3.sku_id, 1, 0) AS isChecked
+        FROM
+            pms_product_sale_attr AS ass
+        INNER JOIN pms_product_sale_attr_value avs ON ass.sale_attr_id = avs.sale_attr_id
+        AND ass.product_id = avs.product_id
+        LEFT JOIN pms_sku_sale_attr_value a3 ON a3.sale_attr_value_id = avs.id
+        AND a3.sku_id = #{id}
+        WHERE
+            avs.product_id = #{productId}
+    </select>
+    <resultMap id="pmsProductSaleAttrMap" type="com.shop.bean.PmsProductSaleAttr" autoMapping="true">
+        <result column="ass_id" property="id"></result>
+        <collection property="pmsProductSaleAttrValueList" ofType="com.shop.bean.PmsProductSaleAttrValue"
+                    autoMapping="true">
+            <result column="avs_id" property="id"></result>
+        </collection>
+    </resultMap>
+</mapper>

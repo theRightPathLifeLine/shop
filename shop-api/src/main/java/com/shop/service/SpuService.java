@@ -1,9 +1,6 @@
 package com.shop.service;
 
-import com.shop.bean.PmsBaseSaleAttr;
-import com.shop.bean.PmsProductImage;
-import com.shop.bean.PmsProductInfo;
-import com.shop.bean.PmsProductSaleAttr;
+import com.shop.bean.*;
 
 import java.util.List;
 
@@ -17,4 +14,8 @@ public interface SpuService {
     List<PmsProductImage> getSpuImageList(String spuId);
 
     List<PmsProductSaleAttr> getSpuSaleAttrList(String spuId);
+
+    List<PmsProductSaleAttr> getSpuSaleAttrList(String productId, String id);
+
+    List<PmsBaseAttrInfo> getByAttrValueId(String attrValues);
 }

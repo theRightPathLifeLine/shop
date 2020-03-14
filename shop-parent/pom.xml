@@ -154,8 +154,6 @@
                 <artifactId>commons-beanutils</artifactId>
                 <version>${beanUtils.version}</version>
             </dependency>
-
-
         </dependencies>
     </dependencyManagement>
 
