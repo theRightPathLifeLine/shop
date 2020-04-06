@@ -60,7 +60,7 @@ public class CookieUtil {
             if (cookieMaxage >= 0)
                 cookie.setMaxAge(cookieMaxage);
             if (null != request)// 设置域名的cookie
-                cookie.setDomain(getDomainName(request));
+                cookie.setDomain("192.168.0.103");
             // 在域名的根路径下保存
             cookie.setPath("/");
             response.addCookie(cookie);
